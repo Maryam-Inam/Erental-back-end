@@ -84,14 +84,6 @@
       "default": "user",
       "required": false
     },
-    "profile_picture": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "requested_ads": {
       "type": "relation",
       "relation": "oneToMany",
@@ -118,6 +110,11 @@
       "relation": "oneToMany",
       "target": "api::rejected-ad.rejected-ad",
       "mappedBy": "users_permissions_user"
+    },
+    "image": {
+      "type": "integer",
+      "default": 107,
+      "min": 0
     }
   }
 }
