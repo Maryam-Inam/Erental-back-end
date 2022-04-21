@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "request_quotes",
+  "info": {
+    "singularName": "request-quote",
+    "pluralName": "request-quotes",
+    "displayName": "Request_quote"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "quantity": {
+      "type": "integer",
+      "min": 1,
+      "default": 1
+    },
+    "city": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "request_quotes"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "request_quotes"
+    }
+  }
+}

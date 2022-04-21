@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rejected_ads",
+  "info": {
+    "singularName": "rejected-ad",
+    "pluralName": "rejected-ads",
+    "displayName": "Rejected_ad"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product_name": {
+      "type": "string"
+    },
+    "product_description": {
+      "type": "richtext"
+    },
+    "rent": {
+      "type": "integer",
+      "default": 0
+    },
+    "duration": {
+      "type": "integer",
+      "min": 1,
+      "default": 1
+    },
+    "quantity": {
+      "type": "integer",
+      "default": 1,
+      "min": 1
+    },
+    "category_list": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category-list.category-list",
+      "inversedBy": "rejected_ads"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "rejected_ads"
+    },
+    "media_files": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

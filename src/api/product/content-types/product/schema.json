@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 25,
+      "minLength": 3,
+      "unique": false
+    },
+    "description": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 250
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "max": 10,
+      "min": 1,
+      "unique": false
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "product"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "products"
+    },
+    "category_list": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category-list.category-list",
+      "inversedBy": "products"
+    },
+    "rent": {
+      "type": "integer"
+    },
+    "duration": {
+      "type": "integer",
+      "default": 1
+    },
+    "request_quotes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::request-quote.request-quote",
+      "mappedBy": "product"
+    }
+  }
+}

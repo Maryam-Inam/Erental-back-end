@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "requested_ads",
+  "info": {
+    "singularName": "requested-ad",
+    "pluralName": "requested-ads",
+    "displayName": "Requested_ad"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product_name": {
+      "type": "string"
+    },
+    "product_description": {
+      "type": "richtext"
+    },
+    "product_media": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "product_quantity": {
+      "type": "integer",
+      "default": 1
+    },
+    "estimated_rent": {
+      "type": "integer"
+    },
+    "estimated_duration": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "requested_ads"
+    },
+    "category_list": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category-list.category-list",
+      "inversedBy": "requested_ads"
+    }
+  }
+}

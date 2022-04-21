@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rented_items",
+  "info": {
+    "singularName": "rented-item",
+    "pluralName": "rented-items",
+    "displayName": "rented_item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "rented_items"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

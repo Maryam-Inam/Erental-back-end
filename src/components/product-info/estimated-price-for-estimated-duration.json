@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_product_info_estimated_price_for_estimated_durations",
+  "info": {
+    "displayName": "Estimated price for estimated duration",
+    "icon": "money-bill-wave",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "price": {
+      "type": "integer",
+      "required": true,
+      "min": 50
+    },
+    "duration": {
+      "type": "string",
+      "required": true,
+      "minLength": 5
+    }
+  }
+}

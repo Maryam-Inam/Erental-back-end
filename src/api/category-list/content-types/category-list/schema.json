@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_lists",
+  "info": {
+    "singularName": "category-list",
+    "pluralName": "category-lists",
+    "displayName": "category_list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "category_lists"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "category_list"
+    },
+    "requested_ads": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::requested-ad.requested-ad",
+      "mappedBy": "category_list"
+    },
+    "rejected_ads": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rejected-ad.rejected-ad",
+      "mappedBy": "category_list"
+    }
+  }
+}
