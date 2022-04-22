@@ -30,7 +30,7 @@
     "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
   },
-   "resolutions": {
+  "resolutions": {
     "formidable": "1.1.1"
   },
   "license": "MIT"
