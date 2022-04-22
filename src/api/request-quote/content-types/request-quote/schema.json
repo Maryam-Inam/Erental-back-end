@@ -4,7 +4,8 @@
   "info": {
     "singularName": "request-quote",
     "pluralName": "request-quotes",
-    "displayName": "Request_quote"
+    "displayName": "Request_quote",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -36,6 +37,17 @@
       "relation": "manyToOne",
       "target": "api::product.product",
       "inversedBy": "request_quotes"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted"
+      ],
+      "default": "pending"
+    },
+    "quote": {
+      "type": "integer"
     }
   }
 }
