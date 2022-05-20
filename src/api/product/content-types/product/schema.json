@@ -71,6 +71,9 @@
       "relation": "oneToMany",
       "target": "api::request-quote.request-quote",
       "mappedBy": "product"
+    },
+    "reporting_reason": {
+      "type": "text"
     }
   }
 }
