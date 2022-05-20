@@ -42,7 +42,8 @@
       "type": "enumeration",
       "enum": [
         "pending",
-        "accepted"
+        "accepted",
+        "rejected"
       ],
       "default": "pending"
     },

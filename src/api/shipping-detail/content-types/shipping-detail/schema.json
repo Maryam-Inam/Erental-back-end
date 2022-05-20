@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shipping_details",
+  "info": {
+    "singularName": "shipping-detail",
+    "pluralName": "shipping-details",
+    "displayName": "shipping_detail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "full_name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "richtext"
+    },
+    "contact_number": {
+      "type": "biginteger"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "biginteger"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "shipping_details"
+    }
+  }
+}

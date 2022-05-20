@@ -115,6 +115,18 @@
       "type": "integer",
       "default": 107,
       "min": 0
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "users_permissions_user"
+    },
+    "shipping_details": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::shipping-detail.shipping-detail",
+      "mappedBy": "users_permissions_user"
     }
   }
 }
