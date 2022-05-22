@@ -127,6 +127,12 @@
       "relation": "oneToMany",
       "target": "api::shipping-detail.shipping-detail",
       "mappedBy": "users_permissions_user"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
     }
   }
 }

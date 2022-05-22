@@ -74,6 +74,12 @@
     },
     "reporting_reason": {
       "type": "text"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "product"
     }
   }
 }
