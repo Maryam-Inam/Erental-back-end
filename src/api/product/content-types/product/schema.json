@@ -80,6 +80,12 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "product"
+    },
+    "reported_contents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reported-content.reported-content",
+      "mappedBy": "product"
     }
   }
 }

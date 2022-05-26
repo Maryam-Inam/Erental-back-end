@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reported_contents",
+  "info": {
+    "singularName": "reported-content",
+    "pluralName": "reported-contents",
+    "displayName": "reported_content",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "reason": {
+      "type": "string"
+    },
+    "review": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::review.review",
+      "inversedBy": "reported_contents"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "reported_contents"
+    }
+  }
+}
