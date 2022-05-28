@@ -160,9 +160,9 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
     };
   },
   async confirm(ctx) {
-    const { checkout_session } = ctx.request.body;
-    const session = stripe.checkout.sessions.retrieve(checkout_session);
-    if (session.payment.status === "paid") {
+    const { checkout_session } = ctx.request.body.data;
+    const session = await stripe.checkout.sessions.retrieve(checkout_session);
+    if (session.payment_status === "paid") {
       const updateOrder = await strapi.service("api::order.order").update(
         {
           checkout_session,
@@ -171,6 +171,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
           status: "paid",
         }
       );
+      // return { session };
       return sanitizeEntity(updateOrder, { model: strapi.models.order });
     } else {
       ctx.throw(400, "The payment wasn't successful, please call support");
