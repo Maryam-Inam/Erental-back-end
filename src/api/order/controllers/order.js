@@ -156,7 +156,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
       },
     });
     return {
-      id: session,
+      id: session.id,
     };
   },
   async confirm(ctx) {
