@@ -19,6 +19,7 @@
     "@strapi/strapi": "4.0.7",
     "pg": "^8.7.3",
     "sqlite3": "5.0.2",
+    "strapi-utils": "^3.6.10",
     "stripe": "^9.2.0"
   },
   "author": {
