@@ -133,6 +133,9 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "user"
+    },
+    "admin_password": {
+      "type": "string"
     }
   }
 }

@@ -28,6 +28,11 @@ const myExtraRoutes = [
     path: "/orders/confirm",
     handler: "api::order.order.confirm",
   },
+  {
+    method: "POST",
+    path: "/orders/returnPassword",
+    handler: "api::order.order.returnPassword",
+  },
 ];
 
 module.exports = customRouter(defaultRouter, myExtraRoutes);
