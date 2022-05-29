@@ -32,11 +32,12 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
       payment_method_types: ["card"],
       customer_email: user.email,
       mode: "payment",
-      success_url: `${BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${BASE_URL}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: BASE_URL,
       shipping_address_collection: {
         allowed_countries: ["US", "PK"],
       },
+      customer_creation: "if_required",
       shipping_options: [
         {
           shipping_rate_data: {
@@ -154,14 +155,5 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
     } else {
       ctx.throw(400, "The payment wasn't successful, please call support");
     }
-  },
-  async returnPassword(ctx) {
-    await strapi.plugins["email"].services.email.send({
-      to: ctx.request.body.data.to,
-      from: "erental@eastdevs.com",
-      replyTo: "arose@eastdevsF.com",
-      subject: "My message",
-      text: "Your password is xyz",
-    });
   },
 }));
