@@ -10,21 +10,23 @@ const fromDecimalToInt = (number) => parseInt(number * 100);
 
 module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   async create(ctx) {
-    const { product, total, shipping_detail } = ctx.request.body.data;
+    const { request_quote, total, shipping_detail } = ctx.request.body.data;
 
-    if (!product) {
-      return ctx.throw(400, "please specify a product");
+    if (!request_quote) {
+      return ctx.throw(400, "please specify a request quote");
     }
 
-    const realProduct = await strapi
-      .service("api::product.product")
-      .findOne(product, {
+    const acceptedQuote = await strapi
+      .service("api::request-quote.request-quote")
+      .findOne(request_quote, {
         populate: "*",
       });
+    const realProduct = acceptedQuote.product;
+    console.log(realProduct.name);
     if (!realProduct) {
       return ctx.throw(404, "No product with such id");
     }
-
+    ``;
     const { user } = ctx.state;
     const BASE_URL = ctx.request.headers.origin || "http://localhost:3000";
 
@@ -38,54 +40,54 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         allowed_countries: ["US", "PK"],
       },
       customer_creation: "if_required",
-      shipping_options: [
-        {
-          shipping_rate_data: {
-            type: "fixed_amount",
-            fixed_amount: {
-              amount: 0,
-              currency: "usd",
-            },
-            display_name: "Free shipping",
-            //   # Delivers between 5-7 business days
-            delivery_estimate: {
-              minimum: {
-                unit: "business_day",
-                value: 5,
-              },
-              maximum: {
-                unit: "business_day",
-                value: 7,
-              },
-            },
-          },
-        },
-        {
-          shipping_rate_data: {
-            type: "fixed_amount",
-            fixed_amount: {
-              amount: 1500,
-              currency: "usd",
-            },
-            display_name: "Next day air",
-            //   # Delivers in exactly 1 business day
-            delivery_estimate: {
-              minimum: {
-                unit: "business_day",
-                value: 1,
-              },
-              maximum: {
-                unit: "business_day",
-                value: 1,
-              },
-            },
-          },
-        },
-      ],
+      // shipping_options: [
+      //   {
+      //     shipping_rate_data: {
+      //       type: "fixed_amount",
+      //       fixed_amount: {
+      //         amount: 0,
+      //     currency: "usd",
+      //   },
+      //   display_name: "Free shipping",
+      //   //   # Delivers between 5-7 business days
+      //   delivery_estimate: {
+      //     minimum: {
+      //       unit: "business_day",
+      //       value: 5,
+      //     },
+      //     maximum: {
+      //       unit: "business_day",
+      //       value: 7,
+      //     },
+      //   },
+      // },
+      // },
+      // {
+      //   shipping_rate_data: {
+      //     type: "fixed_amount",
+      //     fixed_amount: {
+      //       amount: 1500,
+      //       currency: "usd",
+      //     },
+      //     display_name: "Next day air",
+      //     //   # Delivers in exactly 1 business day
+      //     delivery_estimate: {
+      //       minimum: {
+      //           unit: "business_day",
+      //           value: 1,
+      //         },
+      //         maximum: {
+      //           unit: "business_day",
+      //           value: 1,
+      //         },
+      //       },
+      //     },
+      //   },
+      // ],
       line_items: [
         {
           price_data: {
-            currency: "usd",
+            currency: "pkr",
             product_data: {
               name: realProduct.name,
             },
@@ -118,7 +120,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
     const newOrder = await strapi.service("api::order.order").create({
       data: {
         user: user,
-        product: realProduct.id,
+        request_quote: request_quote,
         total: total,
         status: "unpaid",
         checkout_session: session.id,
@@ -137,11 +139,8 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         checkout_session: checkout_session,
       },
     };
+    const data = await strapi.entityService.findMany("api::order.order", query);
     if (session.payment_status === "paid") {
-      const data = await strapi.entityService.findMany(
-        "api::order.order",
-        query
-      );
       const updateOrder = await strapi
         .service("api::order.order")
         .update(data[0].id, {
@@ -149,11 +148,14 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             status: "paid",
           },
         });
-      const sanitizedEntity = await this.sanitizeOutput(updateOrder, ctx);
-
-      return this.transformResponse(sanitizedEntity);
+      var sanitizedEntity = await this.sanitizeOutput(updateOrder, ctx);
     } else {
+      const deleteOrder = await strapi
+        .service("api::order.order")
+        .delete(data[0].id);
+      sanitizedEntity = await this.sanitizeOutput(deleteOrder, ctx);
       ctx.throw(400, "The payment wasn't successful, please call support");
     }
+    return this.transformResponse(sanitizedEntity);
   },
 }));

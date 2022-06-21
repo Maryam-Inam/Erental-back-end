@@ -22,12 +22,6 @@
     "total": {
       "type": "decimal"
     },
-    "product": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "orders"
-    },
     "user": {
       "type": "relation",
       "relation": "manyToOne",
@@ -41,6 +35,12 @@
     },
     "checkout_session": {
       "type": "string"
+    },
+    "request_quote": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::request-quote.request-quote",
+      "inversedBy": "order"
     }
   }
 }
