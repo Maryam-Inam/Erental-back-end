@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bidding_items",
+  "info": {
+    "singularName": "bidding-item",
+    "pluralName": "bidding-items",
+    "displayName": "bidding_item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "bidding_items"
+    },
+    "category_list": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category-list.category-list",
+      "inversedBy": "bidding_items"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "approved",
+        "disapproved"
+      ]
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "bidding_items"
+    }
+  }
+}

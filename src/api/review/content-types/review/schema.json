@@ -34,9 +34,6 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "reviews"
     },
-    "reporting_reason": {
-      "type": "text"
-    },
     "reported_contents": {
       "type": "relation",
       "relation": "oneToMany",

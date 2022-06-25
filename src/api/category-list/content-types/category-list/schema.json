@@ -39,6 +39,12 @@
       "relation": "oneToMany",
       "target": "api::rejected-ad.rejected-ad",
       "mappedBy": "category_list"
+    },
+    "bidding_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bidding-item.bidding-item",
+      "mappedBy": "category_list"
     }
   }
 }

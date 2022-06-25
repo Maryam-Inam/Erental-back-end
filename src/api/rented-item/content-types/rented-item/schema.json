@@ -4,7 +4,8 @@
   "info": {
     "singularName": "rented-item",
     "pluralName": "rented-items",
-    "displayName": "rented_item"
+    "displayName": "rented_item",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,9 +18,22 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "rented_items"
     },
-    "name": {
-      "type": "string",
-      "required": true
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "amount": {
+      "type": "biginteger"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "quantity": {
+      "type": "integer"
     }
   }
 }

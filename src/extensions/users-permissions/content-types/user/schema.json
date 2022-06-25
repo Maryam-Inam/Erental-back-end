@@ -136,6 +136,12 @@
     },
     "admin_password": {
       "type": "string"
+    },
+    "bidding_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bidding-item.bidding-item",
+      "mappedBy": "users_permissions_user"
     }
   }
 }
