@@ -62,10 +62,6 @@
     "rent": {
       "type": "integer"
     },
-    "duration": {
-      "type": "integer",
-      "default": 1
-    },
     "request_quotes": {
       "type": "relation",
       "relation": "oneToMany",

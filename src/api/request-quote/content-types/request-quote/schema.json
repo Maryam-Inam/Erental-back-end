@@ -55,6 +55,9 @@
       "relation": "oneToOne",
       "target": "api::order.order",
       "mappedBy": "request_quote"
+    },
+    "duration": {
+      "type": "integer"
     }
   }
 }

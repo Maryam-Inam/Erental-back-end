@@ -17,7 +17,8 @@
       "enum": [
         "paid",
         "unpaid"
-      ]
+      ],
+      "default": "unpaid"
     },
     "total": {
       "type": "decimal"
