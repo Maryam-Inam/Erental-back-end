@@ -73,6 +73,9 @@
       "relation": "oneToMany",
       "target": "api::reported-content.reported-content",
       "mappedBy": "product"
+    },
+    "duration": {
+      "type": "integer"
     }
   }
 }

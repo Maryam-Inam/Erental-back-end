@@ -48,6 +48,13 @@
       "relation": "oneToMany",
       "target": "api::bidding-item.bidding-item",
       "mappedBy": "order"
+    },
+    "delivery_status": {
+      "type": "enumeration",
+      "enum": [
+        "delivered",
+        "pending_delivery"
+      ]
     }
   }
 }

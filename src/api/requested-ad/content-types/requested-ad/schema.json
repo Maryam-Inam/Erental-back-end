@@ -4,7 +4,8 @@
   "info": {
     "singularName": "requested-ad",
     "pluralName": "requested-ads",
-    "displayName": "Requested_ad"
+    "displayName": "Requested_ad",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,12 +19,13 @@
       "type": "richtext"
     },
     "product_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "product_quantity": {
       "type": "integer",
@@ -31,9 +33,6 @@
     },
     "estimated_rent": {
       "type": "integer"
-    },
-    "estimated_duration": {
-      "type": "string"
     },
     "users_permissions_user": {
       "type": "relation",
@@ -46,6 +45,9 @@
       "relation": "manyToOne",
       "target": "api::category-list.category-list",
       "inversedBy": "requested_ads"
+    },
+    "estimated_duration": {
+      "type": "integer"
     }
   }
 }

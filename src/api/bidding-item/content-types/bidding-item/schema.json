@@ -55,6 +55,10 @@
       "relation": "manyToOne",
       "target": "api::order.order",
       "inversedBy": "bidding_items"
+    },
+    "bid": {
+      "type": "biginteger",
+      "default": "100"
     }
   }
 }
