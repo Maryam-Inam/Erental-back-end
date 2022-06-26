@@ -49,11 +49,11 @@
       "target": "api::bidding-item.bidding-item",
       "mappedBy": "order"
     },
-    "delivery_status": {
+    "delivered": {
       "type": "enumeration",
       "enum": [
-        "delivered",
-        "pending_delivery"
+        "yes",
+        "no"
       ]
     }
   }
