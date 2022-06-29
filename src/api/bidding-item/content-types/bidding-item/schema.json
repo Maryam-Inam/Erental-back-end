@@ -59,6 +59,11 @@
     "bid": {
       "type": "biginteger",
       "default": "100"
+    },
+    "highest_bidder": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
