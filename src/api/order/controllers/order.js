@@ -10,7 +10,16 @@ const fromDecimalToInt = (number) => parseInt(number * 100);
 
 module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   async create(ctx) {
-    const { request_quote, total, shipping_detail } = ctx.request.body.data;
+    const {
+      request_quote,
+      userid,
+      itemPrice,
+      shipping_detail,
+      shippingPrice,
+      taxFee,
+      securityFee,
+      total,
+    } = ctx.request.body.data;
 
     if (!request_quote) {
       return ctx.throw(400, "please specify a request quote");
@@ -122,6 +131,13 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         user: user,
         request_quote: request_quote,
         total: total,
+        total_amount: {
+          item_price: itemPrice,
+          shipping_fee: shippingPrice,
+          security_fee: securityFee,
+          tax_fee: taxFee,
+          total: total,
+        },
         status: "unpaid",
         checkout_session: session.id,
         shipping_detail: shippingDetail.id,

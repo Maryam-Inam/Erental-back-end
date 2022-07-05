@@ -64,6 +64,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "delivered_at": {
+      "type": "date"
     }
   }
 }

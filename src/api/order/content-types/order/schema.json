@@ -55,6 +55,17 @@
         "yes",
         "no"
       ]
+    },
+    "recieved_back": {
+      "type": "enumeration",
+      "enum": [
+        "yes",
+        "no"
+      ],
+      "default": "no"
+    },
+    "total_amount": {
+      "type": "json"
     }
   }
 }
