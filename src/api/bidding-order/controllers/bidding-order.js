@@ -13,22 +13,22 @@ module.exports = createCoreController(
   ({ strapi }) => ({
     async create(ctx) {
       const {
-        biddingItem,
-        userid,
-        itemPrice,
+        bidding_item,
+        user,
+        biddingPrice,
         shipping_detail,
         shippingPrice,
         taxFee,
         total,
       } = ctx.request.body.data;
-
-      if (!biddingItem) {
-        return ctx.throw(400, "please specify a request quote");
+      console.log("item: ", bidding_item);
+      if (!bidding_item) {
+        return ctx.throw(400, "please specify a bidding item");
       }
 
       const realProduct = await strapi
         .service("api::bidding-item.bidding-item")
-        .findOne(biddingItem, {
+        .findOne(bidding_item, {
           populate: "*",
         });
       console.log(realProduct.name);
@@ -36,7 +36,7 @@ module.exports = createCoreController(
         return ctx.throw(404, "No product with such id");
       }
       ``;
-      const { user } = ctx.state;
+      //   const { user } = ctx.state;
       const BASE_URL = ctx.request.headers.origin || "http://localhost:3000";
 
       const session = await stripe.checkout.sessions.create({
@@ -69,10 +69,10 @@ module.exports = createCoreController(
         .create({
           data: {
             user: user,
-            bidding_item: biddingItem,
+            bidding_item: bidding_item,
             amount: total,
             total_amount: {
-              bid_price: itemPrice,
+              bid_price: biddingPrice,
               shipping_fee: shippingPrice,
               tax_fee: taxFee,
               total: total,

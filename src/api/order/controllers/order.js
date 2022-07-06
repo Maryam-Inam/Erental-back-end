@@ -55,7 +55,8 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             },
             unit_amount: fromDecimalToInt(total),
           },
-          quantity: acceptedQuote.quantity,
+          // quantity: acceptedQuote.quantity,
+          quantity: 1,
         },
       ],
     });
