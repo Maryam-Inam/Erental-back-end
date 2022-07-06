@@ -60,6 +60,9 @@
     },
     "total_amount": {
       "type": "json"
+    },
+    "card_number": {
+      "type": "biginteger"
     }
   }
 }

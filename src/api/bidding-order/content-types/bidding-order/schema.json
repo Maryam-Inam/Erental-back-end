@@ -51,6 +51,9 @@
     },
     "checkout_session": {
       "type": "string"
+    },
+    "card_number": {
+      "type": "biginteger"
     }
   }
 }
