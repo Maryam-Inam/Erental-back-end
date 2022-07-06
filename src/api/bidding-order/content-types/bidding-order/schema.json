@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bidding_orders",
+  "info": {
+    "singularName": "bidding-order",
+    "pluralName": "bidding-orders",
+    "displayName": "bidding_order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "paid",
+        "unpaid"
+      ]
+    },
+    "amount": {
+      "type": "biginteger"
+    },
+    "delivered": {
+      "type": "enumeration",
+      "enum": [
+        "yes",
+        "no"
+      ]
+    },
+    "total_amount": {
+      "type": "json"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "bidding_orders"
+    },
+    "shipping_detail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::shipping-detail.shipping-detail"
+    },
+    "bidding_item": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bidding-item.bidding-item",
+      "inversedBy": "bidding_order"
+    },
+    "checkout_session": {
+      "type": "string"
+    }
+  }
+}

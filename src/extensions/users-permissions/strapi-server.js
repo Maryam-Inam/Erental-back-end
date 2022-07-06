@@ -16,7 +16,7 @@ module.exports = (plugin) => {
       to: ctx.request.body.data.to,
       from: "erental@eastdevs.com",
       replyTo: "arose@eastdevsF.com",
-      subject: "My message",
+      subject: "Recover password request",
       text: `Your password is ${user[0].admin_password}, click on http://localhost:3000/login and enter your password`,
     });
     return "You have been sent an email to recover password, look forward to your email, please.";
