@@ -84,7 +84,7 @@ module.exports = createCoreController(
           },
         });
       return {
-        id: session,
+        id: session.id,
       };
     },
     async confirm(ctx) {
@@ -137,7 +137,7 @@ module.exports = createCoreController(
         subject: "Highest bidder selection",
         text: `Congratulations, you have won the highest bid! click on http://localhost:3000/wonBids to check your winning`,
       });
-      return "mail sent";
+      return `mail sent to ${ctx.request.body.data.to}`;
     },
   })
 );

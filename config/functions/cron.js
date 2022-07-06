@@ -1,15 +1,27 @@
 module.exports = {
-  "0 0/1 * 1/1 * ? *": async ({ strapi }) => {
-    console.log("at 3:27");
-    const biddingItems = await strapi
-      .service("api::bidding-item.bidding-item")
-      .find({
-        populate: "*",
-        filters: {
-          status: "approved",
-        },
-      });
-    var sanitizedEntity = await this.sanitizeOutput(biddingItems, ctx);
-    return this.transformResponse(sanitizedEntity);
+  //   "0 0 12 ? 1/1 MON#1 *": async ({ strapi }) => {
+  "* * * * *": async () => {
+    console.log("checking...");
+    // const bidItems = await strapi.db
+    //   .query("api::bidding-item.bidding-item")
+    //   .findMany({
+    //     populate: "*",
+    //     where: {
+    //       highest_bidder: {
+    //         id: {
+    //           $notNull: true,
+    //         },
+    //       },
+    //     },
+    //   });
+
+    // bidItems.map(async (item) => {
+    //   console.log("bidder email: ", item.highest_bidder.email);
+    //   await strapi.service("api::bidding-order.bidding-order").sendMail({
+    //     data: {
+    //       to: item.highest_bidder.email,
+    //     },
+    //   });
+    // });
   },
 };
