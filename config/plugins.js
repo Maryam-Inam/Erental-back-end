@@ -17,28 +17,28 @@ module.exports = ({ env }) => ({
   // ...
   upload: {
     config: {
-      provider: 'aws-s3',
+      provider: "aws-s3",
       providerOptions: {
-        accessKeyId: env('AWS_ACCESS_KEY_ID'),
-        secretAccessKey: env('AWS_SECRET_ACCESS_KEY'),
-        region: 'ap-south-1',
+        accessKeyId: env("AWS_ACCESS_KEY_ID"),
+        secretAccessKey: env("AWS_SECRET_ACCESS_KEY"),
+        region: "ap-south-1",
         params: {
-          Bucket: 'rental-electronics-images',
+          Bucket: "rental-electronics-images",
         },
       },
     },
   },
   email: {
     config: {
-      provider: 'mailgun',
+      provider: "mailgun",
       providerOptions: {
-        apiKey: env('MAILGUN_API_KEY'),
-        domain: env('MAILGUN_DOMAIN'), //Required if you have an account with multiple domains
-        host: env('MAILGUN_HOST', 'api.mailgun.net'), //Optional. If domain region is Europe use 'api.eu.mailgun.net'
+        apiKey: env("MAILGUN_API_KEY"),
+        domain: env("MAILGUN_DOMAIN"), //Required if you have an account with multiple domains
+        host: env("MAILGUN_HOST", "api.mailgun.net"), //Optional. If domain region is Europe use 'api.eu.mailgun.net'
       },
       settings: {
-        defaultFrom: 'erental@eastdevs.com',
-        defaultReplyTo: 'arose@eastdevsF.com',
+        defaultFrom: "",
+        defaultReplyTo: "",
       },
     },
   },
